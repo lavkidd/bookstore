@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <% content_for :title, @book.title %>
+=======
+<%= render 'shared/flashes' %>
+>>>>>>> b473b6f41e9ad079203e62328717a908399581c4
 
 <article class="book">
   <header>
@@ -10,3 +14,9 @@
 </article>
 
 <%= link_to 'All Books', books_path %>
+
+| <%= link_to 'Edit', edit_book_path(@book) %>
+
+<%= button_to 'Delete', @book,
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
