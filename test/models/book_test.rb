@@ -1,3 +1,5 @@
+class BookTest < ActiveSupport::TestCase
+
 def setup
   @book = Book.new
 end
@@ -24,5 +26,7 @@ test 'persistence works properly' do
   assert_equal 'Snow Crash', found_book.title
   assert_equal 'Neal Stephenson', found_book.author
   assert_equal 440, found_book.pages
- end
+end
+
+end
 

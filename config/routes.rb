@@ -16,6 +16,8 @@ get "/books/:id" => "books#show", as: 'book'
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  root 'books#index'
+
   # Example resource route with options:
   #   resources :products do
   #     member do
