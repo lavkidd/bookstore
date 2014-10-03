@@ -1,17 +1,28 @@
 class Book < ActiveRecord::Base
 
-scope :bargains, -> { where('price < 10.00') }
+	has_many :reviews, dependent: :destroy
 
-scope :by, ->(author) { where('author = ?', author) }
+	scope :bargains, -> { where('price < 10.00') }
 
-validates :title, :author, :pages, :price, presence: true
+	scope :by, ->(author) { where('author = ?', author) }
 
-validates :pages,
-  numericality: { only_integer: true, greater_than_or_equal_to: 0 },
-  unless: "pages.blank?"
+	validates :title, :author, :pages, :price, presence: true
 
- validates :price,
-    numericality: { greater_than_or_equal_to: 0 },
-   if: "price.present?"
+	validates :pages,
+	  numericality: { only_integer: true, greater_than_or_equal_to: 0 },
+	  unless: "pages.blank?"
+
+	validates :price,
+	    numericality: { greater_than_or_equal_to: 0 },
+	   if: "price.present?"
+
+	def average_stars
+		if reviews.loaded?
+			reviews.map(&:stars).compact.average
+		else
+			reviews.average(:stars)
+		end
+	end
 
 end
+

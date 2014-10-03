@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <% content_for :title, @book.title %>
-=======
-<%= render 'shared/flashes' %>
->>>>>>> b473b6f41e9ad079203e62328717a908399581c4
 
 <article class="book">
   <header>
@@ -20,3 +16,12 @@
 <%= button_to 'Delete', @book,
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
+
+<p>
+	Read all
+	<%= link_to pluralize(@book.reviews.size, 'review'),
+	                       book_reviews_path(@book) %>
+
+	<p><label>Average Review:</label> <%= format_average_stars(@book) %></p>
+</p>
+

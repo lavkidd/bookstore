@@ -32,6 +32,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
+gem 'powerpack'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
